@@ -1404,10 +1404,6 @@
 
 
 
-s
-
-
-
 
 
 
@@ -1415,15 +1411,15 @@ s
   <!-- chatbot section -->
    <!-- Chatbot Toggle Button -->
     <div class="imogi" id="imogi">
-      <img style="width: 110px;" src="assets/img/d91de58d0f25a548180e9cf99f2ef06f.png" alt="">
+      <img style="width: 100px;" src="assets/img/d91de58d0f25a548180e9cf99f2ef06f.png" alt="">
     </div>
-   <button class="chatbot-toggle" id="chatbotToggle">
+   <!-- <button class="chatbot-toggle" id="chatbotToggle">
     <h6 style="font-weight: bolder;">chat... </h6>
     <svg class="chatbot" viewBox="0 0 24 24">
         <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
         <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
     </svg>
-</button>
+</button> -->
 
 <!-- Chatbot Container -->
 <div class="chatbot-container" id="chatbotContainer">
@@ -1478,14 +1474,14 @@ s
 
 <script>
     // Elements
-    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotToggle = document.getElementById('imogi');
     const chatbotContainer = document.getElementById('chatbotContainer');
     const closeBtn = document.getElementById('closeBtn');
     const chatMessages = document.getElementById('chatMessages');
     const chatInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
     const typingIndicator = document.getElementById('typingIndicator');
-    const imogi = document.getElementById('imogi')
+    //const imogi = document.getElementById('imogi')
 
     // Toggle chatbot
     chatbotToggle.addEventListener('click', () => {
