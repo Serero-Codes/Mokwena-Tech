@@ -1184,49 +1184,37 @@
               </div>
 
               <!-- ✅ CONTACT FORM (Web3Forms Integrated) -->
-              <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form">
-                <!-- Your Web3Forms Access Key -->
-                <input type="hidden" name="access_key" value="088bc073-7f27-4e83-8529-89d016589b34">
+               <form action="https://api.web3forms.com/submit" method="POST" class="php-email-form" id="contact-form">
+  <input type="hidden" name="access_key" value="088bc073-7f27-4e83-8529-89d016589b34">
 
-                <!-- Optional: Auto response message -->
-                <!-- <input type="hidden" name="auto_response"
-                      value="Thank you for contacting us! We’ve received your message and will get back to you within 24 hours.">
-                
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+    </div>
+  </div>
 
-                      <input type="hidden" name="reply_to" value="email">
-                      <input type="hidden" name="from_name" value="name"> -->
-                <!-- Optional: Redirect URL -->
-                <!-- <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you.html"> -->
+  <div class="mb-3">
+    <input type="text" class="form-control" name="subject" placeholder="What's this about?" required>
+  </div>
 
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
-                  </div>
-                </div>
+  <div class="mb-4">
+    <textarea class="form-control" name="message" rows="4" placeholder="Tell us more about your project..." required></textarea>
+  </div>
 
-                <div class="mb-3">
-                  <input type="text" class="form-control" name="subject" placeholder="What's this about?" required>
-                </div>
+  <div class="my-3">
+    <div class="loading" style="display:none;">Loading</div>
+    <!-- <div class="error-message" style="display:none;"></div> -->
+    <div class="sent-message" style="display:none;">Your message has been sent. Thank you!</div>
+  </div>
 
-                <div class="mb-4">
-                  <textarea class="form-control" name="message" rows="4"
-                            placeholder="Tell us more about your project..." required></textarea>
-                </div>
-
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                  <span>Send Message</span>
-                  <i class="bi bi-send-fill"></i>
-                </button>
-              </form>
+  <button type="submit" class="submit-btn">
+    <span>Send Message</span>
+    <i class="bi bi-send-fill"></i>
+  </button>
+</form>
             </div>
           </div>
 
@@ -1292,7 +1280,7 @@
                   <h6>Connect With Us</h6>
                   <div class="social-links">
                     <a href="https:www.linkedin.com/in/serero-mokwena-3577b3347" class="social-link"><i class="bi bi-linkedin"></i></a>
-                    <a href="https://wa.me/0765334475" class="social-link"><i class="bi bi-whatsapp"></i></a>
+                    <a href="https://wa.me/+27765334475" class="social-link"><i class="bi bi-whatsapp"></i></a>
                     <a href="https://github.com/Serero-Codes" class="social-link"><i class="bi bi-github"></i></a>
                     <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
                   </div>
@@ -1382,8 +1370,8 @@
       </div>
       <div class="social-links d-flex mt-4">
         <!-- <a href=""><i class="bi bi-facebook"></i></a> -->
-        <a href="https:www.linkedin.com/in/serero-mokwena-3577b3347"><i class="bi bi-linkedin"></i></a>
-        <a href="https:/wa.me/0765334475"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/serero-mokwena-3577b3347"><i class="bi bi-linkedin"></i></a>
+        <a href="https://wa.me/+27765334475"><i class="bi bi-whatsapp"></i></a>
         <a href="https://github.com/Serero-Codes"><i class="bi bi-github"></i></a>
       </div>
     </div>
@@ -1555,7 +1543,7 @@
     async function sendToBackend(message) {
         try {
             // Replace this URL with your Python backend endpoint
-            const response = await fetch('http://localhost:5000/chat', {
+            const response = await fetch('http://13.245.117.130:8000/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1581,7 +1569,7 @@
         } catch (error) {
             console.error('Error:', error);
             typingIndicator.classList.remove('active');
-            addMessage('Hey, I am currently not available. Please try again later or contact us through Email.', 'bot');
+            addMessage(error, 'bot');
         }
     }
 
@@ -1601,41 +1589,57 @@
 
     //email js
     document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".php-email-form");
-    const loading = form.querySelector(".loading");
-    const errorMessage = form.querySelector(".error-message");
-    const sentMessage = form.querySelector(".sent-message");
+      const form = document.getElementById("contact-form");
+      //const loading = form.querySelector(".loading");
+      //const errorMessage = form.querySelector(".error-message");
+      const sentMessage = form.querySelector(".sent-message");
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      loading.style.display = "block";
-      errorMessage.style.display = "none";
-      sentMessage.style.display = "none";
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      const formData = new FormData(form);
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
+        // loading.style.display = "block";
+        // loading.textContent = "Sending...";
+        // sentMessage. style.display = "none";
 
-        loading.style.display = "none";
+        // Keep "Sending..." for 1.5 seconds
+        
 
-        if (response.ok) {
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData
+          });
+
+          // Ignore any JSON errors completely
+          //sentMessage.style.display = "block";
+          // setTimeout(() => {
+          // loading.style.display = "none";
+          // loading.textContent = "Sending...";
+
+          // Show success message for 2 seconds
           sentMessage.style.display = "block";
+          setTimeout(() => {
+            sentMessage.style.display = "none";
+          }, 2000);
+
+          // }, 1500);
           form.reset();
-        } else {
-          const data = await response.json();
-          throw new Error(data.message || "Form submission failed");
+
+        } catch (error) {
+          // In case of network error
+          errorMessage.textContent = "Unable to send message. Please try again.";
+          errorMessage.style.display = "block";
+        } finally {
+          //loading.style.display = "none";
         }
-      } catch (error) {
-        loading.style.display = "none";
-        errorMessage.textContent = error.message;
-        errorMessage.style.display = "block";
-      }
+      });
     });
-  });
+
+
+      
+  
 </script>
 
 
