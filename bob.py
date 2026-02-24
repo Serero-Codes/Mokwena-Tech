@@ -37,7 +37,8 @@ behavior_prompt = behavior
 chat_session = client.chats.create(
     model = "gemini-2.5-flash"
 )
-app = Flask(__name__, template_folder=os.path.dirname(os.path.abspath(__file__)))
+# app = Flask(__name__, template_folder=os.path.dirname(os.path.abspath(__file__)))
+app = Flask(__name__, template_folder="templates", static_folder="assets")
 # Define a route for the root URL "/" - when users visit the home page
 @app.route("/")
 # Define a function that handles requests to the home page
