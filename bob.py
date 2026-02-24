@@ -12,6 +12,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 # Import the 'behavior' variable from the 'ex.py' file in the same directory
 from ex import behavior
+from flask import Flask,render_template
 # Load environment variables from the .env file into the system
 load_dotenv()
 
@@ -36,7 +37,7 @@ behavior_prompt = behavior
 chat_session = client.chats.create(
     model = "gemini-2.5-flash"
 )
-
+app = Flask(__name__, template_folder=os.path.dirname(os.path.abspath(__file__)))
 # Define a route for the root URL "/" - when users visit the home page
 @app.route("/")
 # Define a function that handles requests to the home page
