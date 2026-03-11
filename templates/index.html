@@ -1543,7 +1543,7 @@
     async function sendToBackend(message) {
         try {
             // Replace this URL with your Python backend endpoint
-            const response = await fetch('http://13.245.117.130:8000/chat', {
+            const response = await fetch('/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
