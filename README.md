@@ -1,6 +1,6 @@
-#Mokwena Tech#
+# Mokwena Tech
 
-Mokwena Tech is a technology and digital solutions brand focused on helping businesses and individuals build a strong digital presence through design, development, and technology services.
+#### Mokwena Tech is a technology and digital solutions brand focused on helping businesses and individuals build a strong digital presence through design, development, and technology services.
 
 We provide creative and technical solutions including web development, graphic design, branding, and digital media services.
 
@@ -8,9 +8,9 @@ We provide creative and technical solutions including web development, graphic d
 
 Mokwena Tech aims to deliver modern, affordable, and high-quality digital solutions. Our goal is to help businesses grow online by providing professional technology services that improve visibility, branding, and functionality.
 
-#🛠 Services
+# 🛠 Services
 
-Mokwena Tech offers the following services:
+### Mokwena Tech offers the following services:
 
 🎨 Graphic Design
 
@@ -46,9 +46,9 @@ Social Media Branding
 
 Digital Marketing Materials
 
-#📂 Repository Purpose
+# 📂 Repository Purpose
 
-This repository contains projects and resources related to Mokwena Tech services, including:
+### This repository contains projects and resources related to Mokwena Tech services, including:
 
 Website source code
 
@@ -60,9 +60,9 @@ Business tools
 
 Client project examples
 
-#⚙️ Technologies Used
+# ⚙️ Technologies Used
 
-Depending on the project, we use technologies such as:
+### Depending on the project, we use technologies such as:
 
 HTML5
 
@@ -84,7 +84,7 @@ Git & GitHub
 
 📦 Installation
 
-#Project deployed using:
+# Project deployed using:
 
 AWS EC2
 
@@ -93,6 +93,7 @@ GitHub Pages
 VPS Hosting
 
 Cloud platforms
+
 
 
 
